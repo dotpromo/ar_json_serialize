@@ -1,6 +1,5 @@
-# ArJsonSerialize
-
-TODO: Write a gem description
+# ArJsonSerialize[![Coverage Status](https://coveralls.io/repos/phenomena/ar_json_serialize/badge.png?branch=master)](https://coveralls.io/r/phenomena/ar_json_serialize?branch=master)[![Build Status](https://travis-ci.org/phenomena/ar_json_serialize.png?branch=master)](https://travis-ci.org/phenomena/ar_json_serialize)
+ActiveRecord JSON serializer
 
 ## Installation
 
@@ -18,7 +17,31 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+You need to have some `text` field for storing some specific data in Hash/Array/etc inside you model.
+
+Add next string in your ActiveRecord model:
+
+```ruby
+class Promo < ActiveRecord::Base
+  json_serialize :test_column
+end
+```
+
+You can set value of this column with any object.
+
+```ruby
+promo = ::Promo.new
+promo.test_column = {'key1' => 'value1'}
+promo.save!
+```
+
+And use it with full power of Hashie!
+
+```ruby
+promo = ::Promo.last
+puts "Our value is #{promo.test_column.key1}"
+```
+
 
 ## Contributing
 
