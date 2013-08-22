@@ -1,5 +1,5 @@
 # ActiveRecord Json Serialize
-[![Coverage Status](https://coveralls.io/repos/phenomena/ar_json_serialize/badge.png?branch=master)](https://coveralls.io/r/phenomena/ar_json_serialize?branch=master)[![Build Status](https://travis-ci.org/phenomena/ar_json_serialize.png?branch=master)](https://travis-ci.org/phenomena/ar_json_serialize)[![Gem Version](https://badge.fury.io/rb/ar_json_serialize.png)](http://badge.fury.io/rb/ar_json_serialize)
+[![Coverage Status](https://coveralls.io/repos/phenomena/ar_json_serialize/badge.png?branch=master)](https://coveralls.io/r/phenomena/ar_json_serialize?branch=master)[![Build Status](https://travis-ci.org/phenomena/ar_json_serialize.png?branch=master)](https://travis-ci.org/phenomena/ar_json_serialize)[![Gem Version](https://badge.fury.io/rb/ar_json_serialize.png)](http://badge.fury.io/rb/ar_json_serialize)[![Code Climate](https://codeclimate.com/github/dotpromo/ar_json_serialize.png)](https://codeclimate.com/github/dotpromo/ar_json_serialize)
 
 ActiveRecord JSON serializer
 
