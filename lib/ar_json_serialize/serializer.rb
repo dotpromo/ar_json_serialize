@@ -4,17 +4,13 @@ module ArJsonSerialize
 
     def load(s)
       if s.present?
-        result = ::MultiJson.load(s)
+        result = ::MultiJson.load(s) rescue s
         case result
         when ::Hash
           ::Hashie::Mash.new(result)
         when ::Array
           result.map do |item|
-            if item.is_a?(::Hash)
-              ::Hashie::Mash.new(item)
-            else
-              item
-            end
+            item.is_a?(::Hash) ? ::Hashie::Mash.new(item) : item
           end
         else
           result
@@ -27,5 +23,6 @@ module ArJsonSerialize
     def dump(s)
       ::MultiJson.dump(s)
     end
+
   end
 end
