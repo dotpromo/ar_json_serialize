@@ -6,18 +6,18 @@ describe ::ArJsonSerialize::Serializer do
 
   context '#load' do
     it 'should call MultiJson.load' do
-      ::MultiJson.should_receive(:load).with('string')
+      expect(::MultiJson).to receive(:load).with('string')
       subject.load('string')
     end
 
     [nil, ''].each do |k|
       it "should not call MultiJson.load if string is #{k.inspect}" do
-        ::MultiJson.should_not_receive(:load)
+        expect(::MultiJson).not_to receive(:load)
         subject.load(k)
       end
 
       it "should return empty if string is #{k.inspect}" do
-        subject.load(k).should == ''
+        expect(subject.load(k)).to eq('')
       end
 
     end
@@ -35,7 +35,11 @@ describe ::ArJsonSerialize::Serializer do
         let(:data) { '{"key1":"value1"}' }
         it { should be_a(::Hashie::Mash) }
         it { should == {'key1' => 'value1'} }
-        its(:key1) { should == 'value1' }
+
+        describe '#key1' do
+          subject { super().key1 }
+          it { should == 'value1' }
+        end
       end
 
       context 'Array' do
@@ -49,7 +53,11 @@ describe ::ArJsonSerialize::Serializer do
           let(:data) { '["1","2","3",{"key1":"value1"}]' }
           it { should be_a(::Array) }
           it { should == ['1', '2', '3', {"key1"=>"value1"}] }
-          its(:last) { should be_a(::Hashie::Mash) }
+
+          describe '#last' do
+            subject { super().last }
+            it { should be_a(::Hashie::Mash) }
+          end
         end
 
       end
@@ -60,7 +68,7 @@ describe ::ArJsonSerialize::Serializer do
 
   context '#dump' do
     it 'should call MultiJson.dump' do
-      ::MultiJson.should_receive(:dump).with('foo')
+      expect(::MultiJson).to receive(:dump).with('foo')
       subject.dump('foo')
     end
   end

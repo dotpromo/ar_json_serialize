@@ -1,7 +1,7 @@
 module ArJsonSerialize
   module ActiveRecordExt
     def json_serialize(column)
-      self.serialize column, ::ArJsonSerialize::Serializer
+      serialize column, ::ArJsonSerialize::Serializer
     end
   end
 end
